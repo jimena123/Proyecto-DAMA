@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, TextInput, FlatList, Dimensions, Platform } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity, TextInput, FlatList, Dimensions, Platform } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { themeColors } from '../theme';
@@ -8,6 +8,7 @@ import Carousel from 'react-native-snap-carousel';
 import CoffeeCard from '../components/coffeeCard';
 import { BellIcon, MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import { MapPinIcon } from 'react-native-heroicons/solid'
+import LottieView from "lottie-react-native"
 
 const { width, height } = Dimensions.get('window');
 const ios = Platform.OS == 'ios';
@@ -32,7 +33,10 @@ export default function HomeScreen() {
             className="h-9 w-9 rounded-full" />
 
           <View className="flex-row items-center space-x-2">
-            <Text>Bienvenid@ </Text>
+          <LottieView source={require('../assets/lottiefiles/welcometitle.json')}
+          autoPlay
+          style={styles.lottie}
+          />
           </View>
           <BellIcon size="27" color="black" />
         </View>
@@ -100,3 +104,12 @@ export default function HomeScreen() {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  lottie: {
+    width: 70, 
+    height: 35, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+  },
+});

@@ -6,10 +6,12 @@ import CarritoScreen from '../screens/CarritoScreen';
 import { Dimensions, LogBox, Platform, Text, View } from 'react-native';
 import ProductScreen from '../screens/ProductScreen';
 import { themeColors } from '../theme';
+import WelcomeScreen from '../screens/WelcomeScreen';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeIcon as HomeOutline, HeartIcon as HeartOutline, ShoppingBagIcon as BagOutline } from 'react-native-heroicons/outline';
 import { HomeIcon as HomeSolid, HeartIcon as HeartSolid, ShoppingBagIcon as BagSolid } from 'react-native-heroicons/solid';
+import LoadingScreen from '../screens/LoadingScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -24,7 +26,9 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{
         contentStyle: { backgroundColor: 'white' }
-      }}>
+      }} initialRouteName='Welcome'>
+        <Stack.Screen name="Welcome" options={{ headerShown: false }} component={WelcomeScreen} /> 
+        <Stack.Screen name="Loading" options={{ headerShown: false }} component={LoadingScreen} />     
         <Stack.Screen name="Home" options={{ headerShown: false }} component={HomeTabs} />
         <Stack.Screen name="Product" options={{ headerShown: false }} component={ProductScreen} />
         <Stack.Screen name="CarritoScreen" options={{ headerShown: false }} component={CarritoScreen} />
